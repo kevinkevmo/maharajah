@@ -1,10 +1,17 @@
-function printNextLyric(lyric) {
-    if (lyric === undefined) {
-        console.log("no lyric was entered");
-    } else if (lyric.toLowerCase() === "at first i was afraid") {
-        console.log("I was petrified");
+const lyrics = require("./lyrics.json")
+function printNextLyric(song, lyric) {
+    if (lyrics[song.toLowerCase()] === undefined) {
+        console.log("no song found")
     }
-    
+    if (lyric === undefined || song === undefined) {
+        console.log("no lyric or song was entered");
+    } 
+    const knownLyrics = lyrics[song.toLowerCase()]
+    const indexOfLyric = knownLyrics.lastIndexOf(lyric)
+    if (indexOfLyric != -1) {
+const nextLyric = knownLyrics[indexOfLyric +1]
+console.log(nextLyric)
+    }
 }
 
-printNextLyric("at first i was afRaid")
+printNextLyric("...Baby One More Time", "Give me a sign")
